@@ -1,0 +1,22 @@
+# Variables
+$directoryPath = "C:\Windows\System32\drivers\crowdstrike"  # Chemin du répertoire contenant les fichiers à supprimer
+$filePattern = "C-00000291*.sys"  # Motif des fichiers à supprimer
+
+# Fonction pour supprimer les fichiers correspondants
+function Remove-AffectedFiles {
+    Write-Output "Suppression des fichiers correspondant au motif $filePattern dans $directoryPath..."
+    $files = Get-ChildItem -Path $directoryPath -Filter $filePattern
+    if ($files) {
+        foreach ($file in $files) {
+            Remove-Item $file.FullName -Force
+            Write-Output "Fichier supprimé : $($file.FullName)"
+        }
+    } else {
+        Write-Output "Aucun fichier correspondant trouvé."
+    }
+}
+
+# Exécution de la fonction
+Remove-AffectedFiles
+
+Write-Output "Suppression des fichiers terminée."
