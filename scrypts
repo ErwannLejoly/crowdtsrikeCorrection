@@ -1,5 +1,5 @@
 # Variables
-$directoryPath = "C:\Windows\System32\drivers\crowdstrike"  # Chemin du répertoire contenant les fichiers à supprimer
+$directoryPath = "C:\Windows\System32\drivers\crowdstrike"  # Répertoire contenant les fichiers à supprimer
 $filePattern = "C-00000291*.sys"  # Motif des fichiers à supprimer
 
 # Fonction pour supprimer les fichiers correspondants
@@ -20,3 +20,4 @@ function Remove-AffectedFiles {
 Remove-AffectedFiles
 
 Write-Output "Suppression des fichiers terminée."
+
